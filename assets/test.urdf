@@ -1,0 +1,72 @@
+<robot name = "linkage">
+  <!-- links section -->
+  <mujoco>
+    <compiler discardvisual="false"/>
+  </mujoco>
+  <link name = "link A">
+    <inertial>
+      <origin xyz = "0 0 0" />
+      <mass value = "0.5" />
+      <inertia ixx = "0.5" iyy = "0.5" izz = "0.5" 
+ixy = "0" ixz = "0" iyz = "0" />
+    </inertial>
+    <visual>
+      <origin xyz = "0 0 0" />
+      <geometry>
+        <box size = "0.5 0.5 0.1" />
+      </geometry>
+      <material name = "white A">
+        <color rgba = "1.0 1.0 1.0 1" />
+      </material>
+    </visual>
+  </link>
+  <link name = "link B">
+    <inertial>
+      <origin xyz = "0 0 -0.5" />
+      <mass value = "0.5" />
+      <inertia ixx = "0.5" iyy = "0.5" izz = "0.5" 
+  ixy = "0" ixz = "0" iyz = "0" />
+    </inertial>
+    <visual>
+      <origin xyz = "0 0 -0.5" />
+      <geometry>
+        <cylinder radius = "0.05" length = "1"  />
+      </geometry>
+      <material name = "orange B">
+        <color rgba = "1.0 0.65 0.0 1" />
+      </material>
+    </visual>
+  </link>
+  <link name = "link C">
+    <inertial>
+      <origin xyz = "0 0 -0.5" />
+      <mass value = "0.5" />
+      <inertia ixx = "0.5" iyy = "0.5" izz = "0.5" 
+  ixy = "0" ixz = "0" iyz = "0" />
+    </inertial>
+    <visual>
+      <origin xyz = "0 0 -0.5" />
+      <geometry>
+        <cylinder radius = "0.05" length = "1"  />
+      </geometry>
+      <material name = "orange-red C">
+        <color rgba = "1.0 0.27 0.0 1" />
+      </material>
+    </visual>
+  </link>
+
+  <!-- joints section -->>
+  <joint name = "joint A" type = "continuous">
+    <parent link = "link A" />
+    <child link = "link B" />
+    <origin xyz = "0 0 -0.05" />
+    <axis xyz = "0 1 0" />
+  </joint>
+  <joint name = "joint B" type = "continuous">
+    <parent link = "link B" />
+    <child link = "link C" />
+    <origin xyz = "0 0 -1" />
+    <axis xyz = "0 1 0" />
+    <dynamics damping ="0.002" />
+  </joint>
+</robot>
